@@ -312,6 +312,24 @@ examples.themes = function () {
 
     return doc;
 };
+// Header Styiles - Create tables with diffeent styles on the headers
+examples['header-styles'] = function () {
+    var doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.setFontStyle('bold');
+    var header1 = {"id":{fillColor: [44, 62, 80],fontSize: 10,"halign":"center"},
+        "name":{fillColor: [44, 62, 80],fontSize: 10},
+        "email":{fillColor: [44, 62, 80],fontSize: 10},
+        "city":{fillColor: [44, 62, 80],fontSize: 10},
+        "expenses":{fillColor: [204, 49, 49],fontSize: 10,"halign":"right"}};
+    var dataStyle = {"id":{"halign":"center"},"expenses":{"halign":"right"}};
+
+    doc.text('Style 1"', 14, 16);
+    doc.autoTable(getColumns(), getData(), {startY: 20, headerStyles:header1,columnStyles:dataStyle});
+
+
+    return doc;
+};
 
 // Custom style - shows how custom styles can be applied to tables
 examples.custom = function () {
